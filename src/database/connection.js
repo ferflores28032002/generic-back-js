@@ -1,4 +1,5 @@
 import pkg from "pg";
+
 import { envs } from "../config/envs.config.js";
 
 const { Pool } = pkg;

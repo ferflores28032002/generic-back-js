@@ -2,7 +2,7 @@ import { createUserDto } from "../dtos/createUserDto.js";
 
 import * as userService from "../services/user.service.js";
 
-export const listUsers = async (req, res) => {
+export const listUsers = async (_, res) => {
   try {
     const users = await userService.getAllUsers();
     return res.json(users);
