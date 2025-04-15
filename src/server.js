@@ -2,6 +2,8 @@ import express from "express";
 
 import cors from "cors";
 
+import routers from "./routes/index.routes.js";
+
 class Server {
   constructor(port) {
     this.app = express();
@@ -18,10 +20,10 @@ class Server {
 
   routes() {
     this.app.get("/", (req, res) => {
-      res.send(
-        "Welcome to the API! Visit /api-docs for Swagger documentation."
-      );
+      res.send("Visit /api-docs for Swagger documentation.");
     });
+
+    this.app.use("/api/v1", routers);
   }
 
   start() {
