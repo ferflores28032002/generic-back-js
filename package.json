@@ -22,7 +22,9 @@
     "env-var": "^7.5.0",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
-    "pg": "^8.14.1"
+    "pg": "^8.14.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

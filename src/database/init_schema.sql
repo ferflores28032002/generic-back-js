@@ -1,19 +1,18 @@
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE testdb;
 
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL
 );
 
-
 INSERT INTO users (name, email) VALUES
 ('Alice', 'alice@example.com'),
 ('Bob', 'bob@example.com');
 
 
+--  SP to create a new user
 CREATE PROCEDURE sp_create_user(
   IN p_name VARCHAR,
   IN p_email VARCHAR
