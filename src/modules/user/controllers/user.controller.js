@@ -28,3 +28,7 @@ export const addUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const testJest = (_, res) => {
+  return res.status(200).json({ message: "pong!" });
+};

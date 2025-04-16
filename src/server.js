@@ -19,7 +19,7 @@ class Server {
   }
 
   routes() {
-    this.app.get("/", (req, res) => {
+    this.app.get("/", (_, res) => {
       res.send("Visit /api-docs for Swagger documentation.");
     });
 
