@@ -21,6 +21,7 @@
     "env-var": "^7.5.0",
     "express": "^5.1.0",
     "pg": "^8.14.1",
+    "socket.io": "^4.8.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },

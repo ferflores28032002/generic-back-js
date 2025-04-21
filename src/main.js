@@ -4,7 +4,6 @@ import { envs } from "./config/envs.config.js";
 import { connection } from "./database/connection.js";
 
 const server = new Server(envs.app.port);
-server.start();
 
 const main = async () => {
   try {
