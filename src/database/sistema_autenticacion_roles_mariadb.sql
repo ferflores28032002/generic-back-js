@@ -157,3 +157,35 @@ INSERT INTO role_permissions (role_id, permission_id) VALUES
 INSERT INTO permission_components (permission_id, component_id) VALUES 
 (1, 1),  -- Resumen general
 (2, 4);  -- Crear producto Managua
+
+
+-- Asi quedaría la estructura de permisos y componentes en JSON:
+{
+  "modules": [
+    {
+      "name": "Dashboard",
+      "path": "/dashboard",
+      "icon": "dashboard",
+      "components": [
+        { "name": "Resumen general", "type": "tab" },
+        { "name": "Actualizar métricas", "type": "button" }
+      ]
+    },
+    {
+      "name": "Productos",
+      "path": "/productos",
+      "icon": "box",
+      "submodules": [
+        {
+          "name": "De Managua",
+          "path": "/productos/managua",
+          "icon": "map",
+          "components": [
+            { "name": "Ver lista", "type": "tab" },
+            { "name": "Crear", "type": "button" }
+          ]
+        }
+      ]
+    }
+  ]
+}
