@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "User API",
+    "title": "Sistema de Autenticaci\u00f3n - API",
     "version": "1.0.0",
-    "description": "API para gestión de usuarios con procedimientos almacenados"
+    "description": "API para gesti\u00f3n de usuarios, roles, permisos, m\u00f3dulos y componentes usando procedimientos almacenados."
   },
   "servers": [
     {
@@ -14,11 +14,11 @@
   "paths": {
     "/users": {
       "get": {
-        "summary": "Listar todos los usuarios",
+        "summary": "Listar users",
         "tags": ["Users"],
         "responses": {
           "200": {
-            "description": "Lista de usuarios",
+            "description": "\u00c9xito",
             "content": {
               "application/json": {
                 "schema": {
@@ -29,14 +29,11 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Error interno del servidor"
           }
         }
       },
       "post": {
-        "summary": "Crear un nuevo usuario",
+        "summary": "Crear user",
         "tags": ["Users"],
         "requestBody": {
           "required": true,
@@ -50,13 +47,225 @@
         },
         "responses": {
           "201": {
-            "description": "Usuario creado correctamente"
+            "description": "User creado"
           },
           "400": {
-            "description": "Error de validación"
+            "description": "Error de validaci\u00f3n"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "summary": "Listar roles",
+        "tags": ["Roles"],
+        "responses": {
+          "200": {
+            "description": "\u00c9xito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear role",
+        "tags": ["Roles"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Role creado"
           },
-          "500": {
-            "description": "Error interno del servidor"
+          "400": {
+            "description": "Error de validaci\u00f3n"
+          }
+        }
+      }
+    },
+    "/permissions": {
+      "get": {
+        "summary": "Listar permissions",
+        "tags": ["Permissions"],
+        "responses": {
+          "200": {
+            "description": "\u00c9xito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Permission"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear permission",
+        "tags": ["Permissions"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Permission creado"
+          },
+          "400": {
+            "description": "Error de validaci\u00f3n"
+          }
+        }
+      }
+    },
+    "/modules": {
+      "get": {
+        "summary": "Listar modules",
+        "tags": ["Modules"],
+        "responses": {
+          "200": {
+            "description": "\u00c9xito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Module"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear module",
+        "tags": ["Modules"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Module creado"
+          },
+          "400": {
+            "description": "Error de validaci\u00f3n"
+          }
+        }
+      }
+    },
+    "/submodules": {
+      "get": {
+        "summary": "Listar submodules",
+        "tags": ["Submodules"],
+        "responses": {
+          "200": {
+            "description": "\u00c9xito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Submodule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear submodule",
+        "tags": ["Submodules"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmoduleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Submodule creado"
+          },
+          "400": {
+            "description": "Error de validaci\u00f3n"
+          }
+        }
+      }
+    },
+    "/components": {
+      "get": {
+        "summary": "Listar components",
+        "tags": ["Components"],
+        "responses": {
+          "200": {
+            "description": "\u00c9xito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Component"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear component",
+        "tags": ["Components"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComponentInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Component creado"
+          },
+          "400": {
+            "description": "Error de validaci\u00f3n"
           }
         }
       }
@@ -71,27 +280,190 @@
             "type": "integer",
             "example": 1
           },
-          "name": {
+          "username": {
             "type": "string",
-            "example": "Alice"
+            "example": "john"
           },
           "email": {
             "type": "string",
-            "example": "alice@example.com"
+            "example": "john@example.com"
           }
         }
       },
       "UserInput": {
         "type": "object",
-        "required": ["name", "email"],
+        "required": ["username", "email", "password_hash"],
         "properties": {
-          "name": {
+          "username": {
             "type": "string",
-            "example": "Alice"
+            "example": "john"
           },
           "email": {
             "type": "string",
-            "example": "alice@example.com"
+            "example": "john@example.com"
+          },
+          "password_hash": {
+            "type": "string",
+            "example": "hashedpassword123"
+          }
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "example": "Admin"
+          }
+        }
+      },
+      "RoleInput": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Admin"
+          }
+        }
+      },
+      "Permission": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "PermissionInput": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "dashboard.view"
+          },
+          "description": {
+            "type": "string",
+            "example": "Ver el dashboard"
+          }
+        }
+      },
+      "Module": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "ModuleInput": {
+        "type": "object",
+        "required": ["name", "path", "icon"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "Submodule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "module_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "SubmoduleInput": {
+        "type": "object",
+        "required": ["module_id", "name", "path", "icon"],
+        "properties": {
+          "module_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "Component": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "module_id": {
+            "type": "integer"
+          },
+          "submodule_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "ComponentInput": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["tab", "button"]
+          },
+          "module_id": {
+            "type": "integer"
+          },
+          "submodule_id": {
+            "type": "integer"
           }
         }
       }
@@ -100,7 +472,27 @@
   "tags": [
     {
       "name": "Users",
-      "description": "Operaciones relacionadas con usuarios"
+      "description": "Operaciones con users"
+    },
+    {
+      "name": "Roles",
+      "description": "Operaciones con roles"
+    },
+    {
+      "name": "Permissions",
+      "description": "Operaciones con permissions"
+    },
+    {
+      "name": "Modules",
+      "description": "Operaciones con modules"
+    },
+    {
+      "name": "Submodules",
+      "description": "Operaciones con submodules"
+    },
+    {
+      "name": "Components",
+      "description": "Operaciones con components"
     }
   ]
 }
