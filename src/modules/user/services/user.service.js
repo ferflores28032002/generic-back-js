@@ -1,17 +1,23 @@
 import { connection } from "../../../database/connection.js";
-
 import { UserModel } from "../models/user.model.js";
 
 export const getAllUsers = async () => {
-  const result = await connection.query(`SELECT * FROM USERS`);
-  return result.rows;
+  const [rows] = await connection.query(`SELECT * FROM ${UserModel.table}`);
+  return rows;
 };
 
-export const createUser = async ({ name, email }) => {
-  const result = await connection.query(
-    `CALL ${UserModel.procedures.create}($1, $2)`,
-    [name, email]
-  );
+export const createUser = async ({ username, email, password_hash }) => {
+  await connection.query(`CALL ${UserModel.procedures.create}(?, ?, ?)`, [
+    username,
+    email,
+    password_hash,
+  ]);
+};
 
-  return result.rows[0];
+export const getUserAccessStructure = async (user_id) => {
+  const [rows] = await connection.query(
+    `CALL ${UserModel.procedures.getAccess}(?)`,
+    [user_id]
+  );
+  return rows[0];
 };
