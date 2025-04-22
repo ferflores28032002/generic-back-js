@@ -126,10 +126,14 @@ BEGIN
 END;
 
 
+
+
 CREATE PROCEDURE sp_delete_user(IN p_id INT)
 BEGIN
   DELETE FROM users WHERE id = p_id;
 END;
+
+
 
 
 CREATE PROCEDURE sp_create_role(IN p_name VARCHAR(50))
@@ -138,11 +142,17 @@ BEGIN
 END;
 
 
+
+
+
 CREATE PROCEDURE sp_create_permission(IN p_name VARCHAR(100), IN p_description TEXT)
 BEGIN
   INSERT INTO permissions (name, description)
   VALUES (p_name, p_description);
 END;
+
+
+
 
 
 CREATE PROCEDURE sp_assign_role(IN p_user_id INT, IN p_role_id INT)
@@ -153,11 +163,16 @@ END;
 
 
 
+
+
 CREATE PROCEDURE sp_assign_permission(IN p_role_id INT, IN p_permission_id INT)
 BEGIN
   INSERT IGNORE INTO role_permissions (role_id, permission_id)
   VALUES (p_role_id, p_permission_id);
 END;
+
+
+
 
 CREATE PROCEDURE sp_create_module(
   IN p_name VARCHAR(100),
@@ -168,6 +183,9 @@ BEGIN
   INSERT INTO modules (name, path, icon)
   VALUES (p_name, p_path, p_icon);
 END;
+
+
+
 
 
 CREATE PROCEDURE sp_create_submodule(
@@ -182,6 +200,10 @@ BEGIN
 END;
 
 
+
+
+
+
 CREATE PROCEDURE sp_create_component(
   IN p_name VARCHAR(100),
   IN p_type ENUM('tab', 'button'),
@@ -192,6 +214,10 @@ BEGIN
   INSERT INTO components (name, type, module_id, submodule_id)
   VALUES (p_name, p_type, p_module_id, p_submodule_id);
 END;
+
+
+
+
 
 DROP PROCEDURE IF EXISTS sp_get_user_access_structure;
 
